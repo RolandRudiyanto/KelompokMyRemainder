@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uts2/View/add_data.dart';
+import 'package:uts2/View/belanja.dart';
+import 'package:uts2/View/home.dart';
+import 'package:uts2/data/cart_provider.dart';
+import 'package:uts2/menu.dart';
 
 void main() {
   runApp( MyApp());
@@ -10,8 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: AddData(),
+    return ChangeNotifierProvider(
+      create: (_) => CardProvider(),
+      child: Builder(builder: (BuildContext context){
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Menu(),
+        );
+      },
+      ),
     );
   }
 }

@@ -1,11 +1,13 @@
 class Data{
-  final int? id;
+  late final int? id;
   final String? tgl;
   final String? judul;
   final String? desc;
 
+
+
   Data({
-    this.id,this.tgl,this.judul,this.desc
+    this.id,this.tgl,this.judul,this.desc,
   });
 
   Data.fromMap(Map<String, dynamic> res)

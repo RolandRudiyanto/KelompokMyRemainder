@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:uts2/View/belanja.dart';
 import 'package:uts2/View/home.dart';
 import 'package:uts2/data/database.dart';
 import 'package:intl/intl.dart';
+import 'package:uts2/menu.dart';
 import '../data/data.dart';
 
 class AddData extends StatefulWidget {
@@ -30,7 +32,7 @@ class _AddDataState extends State<AddData> {
   }
 
   loadNotes() async{
-    dataList = dbHelper!.getDataList();
+    dataList = dbHelper!.getNotes();
   }
 
   @override
@@ -70,6 +72,7 @@ class _AddDataState extends State<AddData> {
                                 lastDate: DateTime(2050));
                             if (datepiker != null) {
                               String formatDate = DateFormat("dd-MM-yyy").format(datepiker);
+                              String year = DateFormat("yyyy").format(datepiker);
                               setState(() {
                                 _date.text=formatDate;
                               });
@@ -135,17 +138,15 @@ class _AddDataState extends State<AddData> {
                       child: InkWell(
                         onTap: (){
                           if(_fromKey.currentState!.validate()){
-                            dbHelper!.insert(Data(
+                            dbHelper!.insertNote(Data(
                               tgl: _date.text,
                               judul: _judul.text,
                               desc: _desc.text,
                             ));
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Belanja()));
                             _date.clear();
                             _judul.clear();
                             _desc.clear();
-
-                            print("Data Add");
                           }
                         },
                         child: Container(
