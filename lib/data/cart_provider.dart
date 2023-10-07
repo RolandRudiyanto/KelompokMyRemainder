@@ -22,6 +22,7 @@ class CardProvider with ChangeNotifier{
     return _cart;
   }
 
+
   void _setPrefItems() async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setInt('card_item', _counter);

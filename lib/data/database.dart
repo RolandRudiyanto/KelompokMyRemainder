@@ -64,9 +64,12 @@ class DBHelper{
     });
   }
 
-  Future<int> insertShoppingItem(Cart cart) async {
+  Future<int> insertShoppingItem(Cart cart, int id) async {
     final db = await database;
-    return await db!.insert('shopping_items', cart.toMap());
+    final itemData = cart.toMap();
+    itemData['id'] = id;
+    final id = await db.insert('shopping_items', id);
+    return id;
   }
 
   Future<List<Cart>> getShoppingItems() async {

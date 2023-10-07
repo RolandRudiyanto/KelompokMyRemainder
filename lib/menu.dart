@@ -23,13 +23,16 @@ class _MenuState extends State<Menu> {
         child: _page.elementAt(_selectedItem),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xff1a1a1a),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "Home"
+              backgroundColor: Color(0xffd6cfc7),
+              icon: Icon(Icons.home,color: Color(0xffd6cfc7),),
+              label: "Home",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.history),
+              backgroundColor: Color(0xffd6cfc7),
+              icon: Icon(Icons.history,color: Color(0xffd6cfc7),),
               label: "History"
           ),
         ],

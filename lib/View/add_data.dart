@@ -21,6 +21,7 @@ class _AddDataState extends State<AddData> {
 
   DBHelper? dbHelper;
   late Future<List<Data>> dataList;
+  int? idNotes;
 
   final _fromKey = GlobalKey<FormState>();
 
@@ -136,14 +137,17 @@ class _AddDataState extends State<AddData> {
                     Material(
                       color: Colors.white,
                       child: InkWell(
-                        onTap: (){
+                        onTap: () async {
                           if(_fromKey.currentState!.validate()){
-                            dbHelper!.insertNote(Data(
+                            final insertedNoteId = await dbHelper!.insertNote(Data(
                               tgl: _date.text,
                               judul: _judul.text,
                               desc: _desc.text,
                             ));
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Belanja()));
+                            setState(() {
+                              idNotes = insertedNoteId;
+                            });
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Belanja(idNotes : idNotes)));
                             _date.clear();
                             _judul.clear();
                             _desc.clear();

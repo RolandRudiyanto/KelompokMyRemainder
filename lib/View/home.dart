@@ -32,6 +32,31 @@ class _HomeState extends State<Home> {
 
 
   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xff97978f),
+        appBar: AppBar(
+          title: Text("Home".toUpperCase(),style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w600,),),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+        ),
+        body:Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: 400,
+              child: datanote(),
+            ),
+            _addbutton()
+          ],
+        )
+      // datanote()
+
+
+    );
+  }
+
   Container _addbutton() {
     return Container(
       child:Row(
@@ -39,7 +64,7 @@ class _HomeState extends State<Home> {
           Container(
             margin: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xffd6cfc7),
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(color: Colors.black,width: 5,style: BorderStyle.solid),
             ),
@@ -63,7 +88,7 @@ class _HomeState extends State<Home> {
       ),
     ),
     FloatingActionButton(
-
+    backgroundColor: Color(0xff1a1a1a),
     child: Icon(Icons.add,),
     onPressed: (){
     Navigator.of(context).push(
@@ -130,7 +155,7 @@ class _HomeState extends State<Home> {
                                       Padding(padding: const EdgeInsets.fromLTRB(0, 20, 0, 0)),
                                       Container(
                                         width: 350,
-                                        child: Text(dataTgl.toUpperCase(),style: TextStyle(fontSize: 15,color: Colors.grey),textAlign: TextAlign.left,),
+                                        child: Text(dataTgl.toUpperCase(),style: TextStyle(fontSize: 15,color: Colors.black),textAlign: TextAlign.left,),
                                       ),
                                       Padding(padding: const EdgeInsets.fromLTRB(0, 10, 0, 0)),
                                       Container(
@@ -139,7 +164,7 @@ class _HomeState extends State<Home> {
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: <Widget> [
                                               Text(dataJudul.toUpperCase(),style: TextStyle(fontSize: 25,color: Colors.black),textAlign: TextAlign.left,),
-                                              Text(dataDesc,style: TextStyle(fontSize: 15,color: Colors.grey),textAlign: TextAlign.left,),
+                                              Text(dataDesc,style: TextStyle(fontSize: 15,color: Colors.black),textAlign: TextAlign.left,),
                                             ],
                                           )
                                       ),
@@ -195,30 +220,5 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Home"),
-          leading: IconButton(
-              onPressed: (){
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) =>About())
-                );
-              }, icon: Icon(Icons.info_outline)),
-        ),
-        body:Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: 400,
-              child: datanote(),
-            ),
-            _addbutton()
-          ],
-        )
-      // datanote()
 
-
-    );
-  }
 }

@@ -10,16 +10,22 @@ import 'package:uts2/data/database_cart.dart';
 import 'package:uts2/menu.dart';
 
 class Belanja extends StatefulWidget {
-  const Belanja({super.key});
+  final int? idNotes;
+
+  const Belanja({Key? key, this.idNotes}): super(key: key);
 
   @override
-  State<Belanja> createState() => _BelanjaState();
+  State<Belanja> createState() => _BelanjaState(idNotes);
 }
 
 class _BelanjaState extends State<Belanja> {
 
   DBHelper? dbHelper;
   late Future<List<Cart>> cartList;
+  late Future<List<Data>> dataList;
+  final int? idNotes;
+
+  _BelanjaState(this.idNotes);
 
   final _fromKey = GlobalKey<FormState>();
 
@@ -32,18 +38,10 @@ class _BelanjaState extends State<Belanja> {
 
   loadCart() async{
     cartList = dbHelper!.getShoppingItems();
+    dataList = dbHelper!.getNotes();
+    final int? idNotes = this.idNotes;
   }
-
-  // Future<double?> calculateTotalShopping() async {
-  //   try {
-  //     final dbHelper = DBHelper();
-  //     final total = await dbHelper.calculateTotalShopping();
-  //     return total;
-  //   } catch (e) {
-  //     print('Terjadi kesalahan: $e');
-  //     return null;
-  //   }
-  // }
+  
 
 
 
@@ -75,14 +73,15 @@ class _BelanjaState extends State<Belanja> {
                           leading: Image.asset(belanja.gambarPath,width: 70,height: 70,),
                           title: Text(belanja.nama),
                           subtitle: Text('Harga: \Rp.${belanja.harga}'),
-                          trailing: IconButton(onPressed: (){
+                          trailing: IconButton(onPressed: () async {
+                            final int idNotes = widget.idNotes ?? 0;
                             dbHelper!.insertShoppingItem(
                               Cart(
                                   nama_produk: belanja.nama.toString(),
                                   img_produk: belanja.gambarPath.toString(),
                                   harga_produk: belanja.harga.toDouble(),
                                   quantity: 1,
-                                  id: index
+                                  id: idNotes
                               )
                             ).then((value){
                               print('ADD DATA');
