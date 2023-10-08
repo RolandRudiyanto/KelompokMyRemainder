@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts2/menu.dart';
 
 class About extends StatefulWidget {
 
@@ -10,13 +11,17 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff97978f),
       appBar: AppBar(
-        title: Text(
-          'Remind Us', style: TextStyle(fontSize: 48),
-        ),
-        leading: BackButton(
-          color: Colors.black,
-        ),
+        title: Text("About".toUpperCase(),style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w600,),),
+        centerTitle: true,
+        leading: IconButton(onPressed: (){
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => Menu())
+          );
+        }, icon: Icon(Icons.keyboard_backspace_sharp)),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

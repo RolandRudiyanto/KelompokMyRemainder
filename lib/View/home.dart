@@ -38,6 +38,11 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Text("Home".toUpperCase(),style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w600,),),
           centerTitle: true,
+          leading: IconButton(onPressed: (){
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => About())
+            );
+          }, icon: Icon(Icons.info_outline)),
           elevation: 0,
           backgroundColor: Colors.transparent,
         ),

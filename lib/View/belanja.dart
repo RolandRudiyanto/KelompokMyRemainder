@@ -38,8 +38,6 @@ class _BelanjaState extends State<Belanja> {
 
   loadCart() async{
     cartList = dbHelper!.getShoppingItems();
-    dataList = dbHelper!.getNotes();
-    final int? idNotes = this.idNotes;
   }
   
 
@@ -49,8 +47,12 @@ class _BelanjaState extends State<Belanja> {
   Widget build(BuildContext context) {
     final cart =  Provider.of<CardProvider>(context);
     return Scaffold(
+      backgroundColor: Color(0xff97978f),
       appBar: AppBar(
-        title: Text("Belanja"),
+        title: Text("Belanja".toUpperCase(),style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w600,),),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Column(
         children: [

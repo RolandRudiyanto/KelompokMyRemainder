@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:uts2/View/resum.dart';
 import 'package:uts2/data/cart_provider.dart';
 import 'package:uts2/data/database_cart.dart';
+import 'package:uts2/menu.dart';
 
 import '../data/cart.dart';
 import '../data/data.dart';
@@ -49,12 +50,18 @@ class _ViewScreenState extends State<ViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("View"),
-        leading: BackButton(
-          color: Colors.black,
+        backgroundColor: Color(0xff97978f),
+        appBar: AppBar(
+          title: Text("View".toUpperCase(),style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w600,),),
+          centerTitle: true,
+          leading: IconButton(onPressed: (){
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Menu())
+            );
+          }, icon: Icon(Icons.keyboard_backspace_sharp)),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
         ),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween ,
         children: [

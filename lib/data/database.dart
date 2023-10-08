@@ -48,10 +48,11 @@ class DBHelper{
   }
   Future<int> insertNote(Data data) async {
     final db = await database;
-    return await db!.insert('notes', data.toMap());
+    return await db!.insert('notess', data.toMap());
   }
 
   Future<List<Data>> getNotes() async {
+
     final db = await database;
     final List<Map<String, dynamic>> maps = await db!.query('notes');
     return List.generate(maps.length, (i) {
@@ -62,14 +63,12 @@ class DBHelper{
         desc: maps[i]['desc'],
       );
     });
+
   }
 
-  Future<int> insertShoppingItem(Cart cart, int id) async {
+  Future<int> insertShoppingItem(Cart cart) async {
     final db = await database;
-    final itemData = cart.toMap();
-    itemData['id'] = id;
-    final id = await db.insert('shopping_items', id);
-    return id;
+    return await db!.insert('shopping_items', cart.toMap());
   }
 
   Future<List<Cart>> getShoppingItems() async {

@@ -1,1 +1,8 @@
-// TODO Implement this library.
+class Int {
+
+  final int value;
+
+  Int(this.value);
+
+
+}

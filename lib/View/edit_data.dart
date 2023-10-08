@@ -52,11 +52,17 @@ class _EditDataState extends State<EditData> {
   Widget build(BuildContext context) {
     final cart =  Provider.of<CardProvider>(context);
     return Scaffold(
+        backgroundColor: Color(0xff97978f),
         appBar: AppBar(
-          title: Text("Edit"),
-          leading: BackButton(
-            color: Colors.black,
-          ),
+          title: Text("Edit".toUpperCase(),style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.w600,),),
+          centerTitle: true,
+          leading: IconButton(onPressed: (){
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Menu())
+            );
+          }, icon: Icon(Icons.keyboard_backspace_sharp)),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween ,
