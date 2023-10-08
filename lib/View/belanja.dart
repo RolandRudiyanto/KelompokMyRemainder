@@ -6,7 +6,6 @@ import 'package:uts2/data/cart_provider.dart';
 import 'package:uts2/data/data.dart';
 import 'package:uts2/data/data_belanja.dart';
 import 'package:uts2/data/database.dart';
-import 'package:uts2/data/database_cart.dart';
 import 'package:uts2/menu.dart';
 
 class Belanja extends StatefulWidget {

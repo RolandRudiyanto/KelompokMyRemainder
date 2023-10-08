@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uts2/View/resum.dart';
 import 'package:uts2/data/cart_provider.dart';
-import 'package:uts2/data/database_cart.dart';
 import 'package:uts2/menu.dart';
 
 import '../data/cart.dart';

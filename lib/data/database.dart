@@ -25,7 +25,7 @@ class DBHelper{
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE  notes(id INTEGER PRIMARY KEY AUTOINCREMENT, tgl TEXT NOT NULL, judul TEXT NOT NULL, desc TEXT NOT NULL)
@@ -48,11 +48,10 @@ class DBHelper{
   }
   Future<int> insertNote(Data data) async {
     final db = await database;
-    return await db!.insert('notess', data.toMap());
+    return await db!.insert('notes', data.toMap());
   }
 
   Future<List<Data>> getNotes() async {
-
     final db = await database;
     final List<Map<String, dynamic>> maps = await db!.query('notes');
     return List.generate(maps.length, (i) {
